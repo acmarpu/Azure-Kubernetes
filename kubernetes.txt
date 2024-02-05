@@ -1,0 +1,388 @@
+what kubernetes is
+
+- kubernetes is an open source container orchestration framework which was originally developed by google helps you manage applications and it helps you manage them in different environments
+
+like physical machines virtual machines or cloud environments or even hybrid deployment environments
+
+the rise of microservices caused increased usage of container technologies because 
+1)the containers actually offer the perfect host what are the tasks of a container orchestration tool
+2) increased usage of containers
+3) demand for a proper way of managing those hundreds of containers
+
+what features do orchestration tools offers ?
+a) High avalibility or no downtime 
+b) scalability or high prtformance 
+c) Disaster recovery - backup and restore
+
+
+worker node
+- the basic setup of a worker node or in kubernetes terms a node which is a simple server a physical or virtual machine and the basic component or the smallest unit
+
+
+Deployment controllers : 
+- for rolling out and rolling back applications
+- Service discovery and load balancing : for exposing applications to the outside world  storage orchestration
+- Self-heling: for automatically replacing and rescheduling failed containers 
+
+
+Azure-Managed
+- API Server  : The API server for exposing the kubernetes API and interacting with the etcd store
+- Scheduler : When you create of scale appplications the scheduler determines what nodes can run the workload and starts them.
+- ETCD     : the etcd distributed key-value store: to maintain the state of your Kubernetes cluster and configuration
+- Controller Manager : the controller manager for managing the various controllers that handle things like replication and self-heling
+
+Customer-Managed
+- kubelet for communication with the API server and managing the lifecycle of Pods
+- Container runtime : for pulling and starting containers on the node
+- kube-proxy : for implementing the service networking model
+- Container
+
+
+Node Pool
+- it is set of virtual machine with same configurations
+- System Node Pool
+  coreDNS, metrics server, tunnel front and oms agent
+- User Node Pool
+  Deploy Applications
+
+
+Pod
+- pod is is basically an abstraction over a container
+- smallest unit of k8s
+- usually 1 application per pod
+- each pod gets its own ip address
+- new ip address on re-creation
+- The basic execution unit in Kubernetes is a pod
+- A POD represents a singles instance of a containerized application
+- You can think of a pod as a container or a group of containers that are deployed togther on a single node in the cluster 
+
+
+Deployment 
+
+- blueprint for creating pods
+- most basic configuration for deployment (name and image to use)
+- rest defaults
+- A deploymment is a high-level object that manages a replications Controller or ReplicaSet and provides declarative updates to the application
+- With Deployment, You can specify the desired state of your application and the Deployment will ensure that the applicationis running in that state.
+
+Replication Controller or ReplicaSet
+
+- A Replication Controller ensure that a specified number of pds replicas are running ay mt given time
+- if any pods fail or are deleted, the Replication controller will create new pods to replace them. this helps to ensure the availability of your            application.
+
+
+StatefulSets:
+- A StatefulSet is used to manage stateful application
+- Sateful application are applications that store date and keep tracking it. All databases, Such as MySQL, Oracle, and PostgressSQL are examples of stateful application.
+- Staeless application, on the other hand do not keep the data. Node.js and Nginx are examples of stateless application, for each request, the stateless application will receive new data and process if.
+- This is useful if you have application that need to maintain state acreoss restart or need to communicate with each other using stable network address.
+
+
+Service
+- kubernetes services enable communication between various components within and outside of the application 
+- kubernetes services helps us connect applications together with other applications or users for example our application has groups of pods running various sections such as a group for serving front-end loads to users and other group for running back-end
+
+ClusterIP: 
+- This type of service is the default and creates a stable IP address within the cluster, accessible only to the nodes and other cluster components. it is used for communication between pods 
+- A ClusterIP service is the default Kubernetes service. It gives you a service inside your cluster that other apps inside your cluster can access. There is no external access.
+
+Node Port:
+- service can help us by mapping a port on the node to a port on the pod
+- this type of service opens a static port on each node in the clister, forwarding traffic to the target pods.
+- this allow access to the service from outside the cluster 
+- A NodePort service is the most primitive way to get external traffic directly to your service. NodePort, as the name implies, opens a specific port on all the Nodes (the VMs), and any traffic that is sent to this port is forwarded to the service.
+
+When would you use this?
+There are many downsides to this method:
+You can only have one service per port
+You can only use ports 30000–32767
+If your Node/VM IP address change, you need to deal with that
+
+LoadBalancer
+- This type of service creates an extrnal load balancer in the cloud providers's infrastructure, forwarding traffic to the target pods 
+- it provides a single entry point for extrnal client to access the service 
+- A LoadBalancer service is the standard way to expose a service to the internet. On GKE, this will spin up a Network Load Balancer that will give you a single IP address that will forward all traffic to your service.
+
+- Ruting rules : 
+- forward request to the internal service 
+- Path means internal : url path 
+- http: incoming request gets forward to internal service 
+host:
+- Fvalid domain address 
+- map domain name to nodes IP address, which is the entrypoint
+
+
+Cluster Networking
+Networking is a central part of Kubernetes, but it can be challenging to understand exactly how it is expected to work. There are 4 distinct networking problems to address:
+
+Highly-coupled container-to-container communications: this is solved by Pods and localhost communications.
+Pod-to-Pod communications: this is the primary focus of this document.
+Pod-to-Service communications: this is covered by services.
+External-to-Service communications: this is covered by services.
+
+
+DaemonSet
+- A DaemonSet ensure that a specific pod is running on all nodes in the cluster or on a subset of nodes, as specified 
+- This is useful for deploying applications that need to run on every node in the cluster, such as a logging agent or monitoring agent
+
+
+
+
+Horizontal Pod Scaling(HPA)
+- the HPA is a control loop that continuously monitors the resource of an application and automatically adjusts the number of relicas to mantain a desired level of utilization.
+- CPU usage or as a number of requests per second. You can then deploy the HPA and specify the target deployment or replica set that you want to scale.
+
+
+Taints and Tolerations
+-  are used in Kubernetes to control which nodes can run which pods.
+- A taint is a label that is applied to a node, and it tells kubernetes that certain pods should not be scheduled on that node
+- A toleration is a way to tell kubernetes thata pod can be scheduled on a node even if the node has a taint that would normally prevent it from being scheduled there.
+
+
+
+
+
+------------------------------
+
+
+
+
+
+
+
+
+
+Ingress:
+ingress helps your users access your application
+using a single externally accessible URL
+that you can configure to route traffic
+to different services within your
+cluster based on the URL path at the
+same time implement SSL security as well
+
+specify a set of rules to
+configure ingress the solution you
+deploy is called as an ingress
+controller and the set of rules you
+configure are called as ingress
+resources ingress resources are created
+using definition files
+
+config map
+what it
+does is it's basically your external
+configuration to your application
+so config map would usually contain
+configuration data
+like urls of a database or some other
+services that you use
+and in kubernetes you just connect it to
+the pod
+so that pod actually gets the data that
+config map
+contains and now if you change the name
+of the service
+-external configuration
+-centralized
+-other components can use it
+
+secret
+used to store the secret data
+base64 encode
+storing the data in a secret component does not automatically make it secure
+there are built-in mechanism (like encryption) or basic security which are not enabled by default 
+
+
+
+volumes
+t basically
+attaches
+a physical storage on a hard drive to
+your pod
+and that storage could be either on a
+local machine meaning on the same
+server node where the pod is running or
+it could be on a remote storage
+meaning outside of the kubernetes
+cluster it could be
+a cloud storage or it could be your own
+premise storage
+
+
+
+
+Replicaset:
+Replicaset is managing the replicas of a pod
+
+Layers of Abstraction:
+deployment manages a replica set a
+replica set manages all the replicas
+of that pod and the pod is
+again an abstraction of a container
+and everything below the deployment
+should be managed automatically by
+kubernetes
+
+
+YAML COnfiguration Files:
+- human friendly data serialization standard for all programming
+  languages
+- syntax: strict indentation!
+- store the config file with your code
+- Attributes of spec are specific to the kind
+
+Each configuration file has 3 parts.
+1) metadata
+2) specification
+3) status (automatically generated and added by kubernetes)
+
+Template
+- has it's own "metadat" and "spec" section
+- applies to pod
+- blueprint for a pod
+
+Connecting Components (labels & Selectors & Ports)
+ the connection is established
+is using
+labels and selectors so
+as you see metadata part contains the
+labels
+and the specification part contains
+selectors
+
+as you see metadata part contains the
+labels
+and the specification part contains
+selectors
+
+pod get the label through the template bleprint
+this label is matched by the selector
+
+
+what is a namespace in kubernetes:
+group resources into namespaces
+kubernetes cluster you can
+organize
+resources in namespaces so you can have
+multiple namespaces in a cluster
+namespace as a
+virtual cluster
+default kubernetes gives you
+4 namespaces
+out of the box
+
+by default if you
+don't provide a namespace to a component
+it creates them in a default namespace
+
+structure your components
+avoid conflicts between teams
+share services between diffrent environments
+access and resource limits on namespace level
+
+kubernetes dashboard namespace
+is shipped automatically in minicube so
+it's specific to mini cube
+installation you will not have this in a
+standard cluster
+
+system namespace is not meant for
+your use so basically you shouldn't
+create anything or shouldn't modify
+anything in cube system namespace the
+components
+aster managing
+processes
+q public contains is
+basically the publicly accessible data
+it has a config map that contains
+cluster information which is accessible
+even without
+authentication
+cube
+node lease
+which is actually a recent addition to
+kubernetes and the purpose of that
+namespace is that it
+holds information about the heartbeats
+of nodes so
+each node basically gets its own object
+that contains the information about that
+node's availability
+
+default
+namespace
+and default namespace is the one that
+you're going to be using to create
+the resources at the beginning if you
+haven't created a new namespace
+
+
+Ingress
+
+function of ingress controller is to
+evaluate all the rules that you have
+defined in your cluster
+and this way to manage all the
+redirections so basically
+this will be the entry point in the
+cluster for all the
+requests to that domain or subdomain
+rules that you've
+configured and this will evaluate all
+the rule
+
+Ingress is actually NOT a type of service. Instead, it sits in front of multiple services and act as a “smart router” or entrypoint into your cluster.
+
+You can do a lot of different things with an Ingress, and there are many types of Ingress controllers that have different capabilities.
+
+
+
+
+
+
+
+
+
+kubernetes storage
+persistent volume
+persistent volume claim 
+storage class
+
+ you need a
+storage
+that doesn't depend on the pod lifecycle
+
+storage must also be
+available on all nodes not just one
+specific one
+
+storage needs to survive
+even if the whole cluster crashed
+
+persistent volumes
+are not namespaced meaning
+they're accessible to the whole cluster
+and unlike
+other components that we saw like pods
+and services
+
+kubernetes will always compare what is
+the desired state
+and what is the actual state or the
+status of that component
+and what is the actual state or the
+status of that component
+and if the status and desired state do
+not match
+then kubernetes knows there is something
+to be fixed there
+so it's going to try to fix it and this
+is the basis
+of the self-healing feature that
+kubernetes provides
+
+
+
+
+

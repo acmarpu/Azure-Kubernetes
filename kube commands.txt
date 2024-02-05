@@ -1,0 +1,118 @@
+kubernetes is and open-source system for automating deployment,
+scalling and management of containerzed application 
+
+
+
+Service Configguration File
+-Kind: "Service"
+-metadata/name :  Random name
+-selector: to connect to pod through lable
+-ports: 
+  port : service port
+  targetPort: container port of deployment
+
+kubectl describe service
+endpoints 172.17.0.6:27017 (pod ip)
+ 
+
+az account set --subscription kkk
+az aks get-credentials --resource-group kube-rg --name aks-lab
+
+kubectl.exe config view
+kubectl get all
+kubectl get nodes
+kebectl apply -f azure-vote-all-in-one-redis.yaml
+kubectl get service
+kubectl get pods
+kubectl get nodes -o wide
+kubectl get pods --watch
+kubectl describe pod mypod
+kubectl exec -it podname --bin/bash
+kubectl exec -it podname -c containername --bash
+kubectl describe service
+kubectl get pod -0 wide
+kubectl get pod --show-labels
+kubectl get all | grep mongodb
+kubectl port-forwarding nginx-pod1 8080:80
+kubecrl create namespace name
+kubectl get -- all -namespace
+kubectl get pods -n name
+kubectl get configmap -o yaml
+kubectl apply -f mysql-configmap.yaml --namespace=my-namespace
+
+kubectl api-resources | grep replicaset
+kubectl scale --replicas=4 deployment/deploymet name
+kubectl set image deployment/nginx-deployment nginx-container=nginx:1.21
+kubectl set image deployment/nginx-deployment nginx-container=nginx:1.21 --record
+kubectl rollout history deployment/nginx-deployment
+kubectl rollout undo deployment/nginx-deployment --to-revision=1
+kubectl rollout status deployment/nginx-deployment
+
+secret creation:
+kubectl create secret docker-registry mongo-secret --docker-server=https://index.docker.io/v1/ --docker-username=azureuser --docker-password=Asdfg@123456 --docker-email=acmarpu@gmail.com
+ACR
+kubectl create secret docker-registry mongo-secret --namespace default --docker-server=ptbdoroformdev.azurecr.io --docker-username=ptbdoroformdev --docker-password=h7OVToydVN5kzNZRFR/LbMONfMph2wA=
+
+kubectl create secret generic secret-demo --from-literal=username-kubeadmin --from-literal=password
+
+kubectl create -f mongo-secret.yaml
+kubectl delete secret
+
+64 en coded password and user name generation
+echo -n 'username' | base64
+echo -n 'username' | base64
+
+Debugging Pods
+
+kubectl logs podname
+
+
+<horizantel pod auto scaler>  
+kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
+kubectl het hpa name
+
+Node auto scalling
+az aks update -g demo-rg -n kube01 --enable-cluster-autoscaler --min-count 1 --max-count 3 
+az aks update -g demo-rg -n kube01 --update-cluster-autoscaler --min-count 1 --max-count 5
+
+kubectl describe sc default
+kubectl get pvc
+
+Application Gateway Intigration
+appgwId$(az network application-gateway \
+show -n -g ADC-RG -o tsv --query "id")
+
+az aks enble-addons -n abc-kube \
+-g abc-rg -a ingress-appgw \
+--appgw-id $appgwId
+
+minikube addons enable ingress
+(automatically start the k8s Nginx implementation of ingress controller ))
+kubectl get pod -n kube-system
+kubectl describe ingress dashboard-ingress -n kubernetes-dashboard
+
+
+Deployment:
+kubectl create deployment nginx-depl --image=nginx
+kubectl get deployment 
+kubectl edit deployment name (auto generated configuration file with default values)
+delete deployment depl name
+kubectl get deplyment nginx-deployment -o yaml
+kubectl get deployment nginx-deployment -0 yaml > nginx-deployment-resuly.yaml
+
+
+
+
+
+
+Deploy Yamal file
+.\kubectl apply -f azure-vote.yaml
+.\kubectl get service azure-vote-front --watch
+
+
+ACR
+az acr login -n demoacr231
+docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 demoacr231.azurecr.io/azure/azure-vote-front:v1
+docker push <name of the image:tag>
+az acr repository list --name demoacr231 -o table result 
+az acr repository list --name demoacr231 -o table
