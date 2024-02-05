@@ -21,7 +21,7 @@ az aks get-credentials --resource-group kube-rg --name aks-lab
 kubectl.exe config view
 kubectl get all
 kubectl get nodes
-kebectl apply -f azure-vote-all-in-one-redis.yaml
+kebectl apply -f azure-vote-all-in-one-redis.yaml   # Create deployment
 kubectl get service
 kubectl get pods
 kubectl get nodes -o wide

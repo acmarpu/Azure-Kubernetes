@@ -55,7 +55,7 @@ Pod
 - The basic execution unit in Kubernetes is a pod
 - A POD represents a singles instance of a containerized application
 - You can think of a pod as a container or a group of containers that are deployed togther on a single node in the cluster 
-
+- Atomic unit of scheduling
 
 Deployment 
 
