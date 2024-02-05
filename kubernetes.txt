@@ -1,4 +1,4 @@
-what kubernetes is
+what kubernetes
 
 - kubernetes is an open source container orchestration framework which was originally developed by google helps you manage applications and it helps you manage them in different environments
 
@@ -15,7 +15,7 @@ b) scalability or high prtformance
 c) Disaster recovery - backup and restore
 
 
-worker node
+Worker Node
 - the basic setup of a worker node or in kubernetes terms a node which is a simple server a physical or virtual machine and the basic component or the smallest unit
 
 
@@ -81,6 +81,7 @@ StatefulSets:
 Service
 - kubernetes services enable communication between various components within and outside of the application 
 - kubernetes services helps us connect applications together with other applications or users for example our application has groups of pods running various sections such as a group for serving front-end loads to users and other group for running back-end
+- An abstract way to expose an application running on a set of Pods as a network service.
 
 ClusterIP: 
 - This type of service is the default and creates a stable IP address within the cluster, accessible only to the nodes and other cluster components. it is used for communication between pods 
@@ -126,8 +127,6 @@ DaemonSet
 - This is useful for deploying applications that need to run on every node in the cluster, such as a logging agent or monitoring agent
 
 
-
-
 Horizontal Pod Scaling(HPA)
 - the HPA is a control loop that continuously monitors the resource of an application and automatically adjusts the number of relicas to mantain a desired level of utilization.
 - CPU usage or as a number of requests per second. You can then deploy the HPA and specify the target deployment or replica set that you want to scale.
@@ -139,6 +138,13 @@ Taints and Tolerations
 - A toleration is a way to tell kubernetes thata pod can be scheduled on a node even if the node has a taint that would normally prevent it from being scheduled there.
 
 
+Ingress:
+ingress helps your users access your application using a single externally accessible URL that you can configure to route traffic
+to different services within your cluster based on the URL path at the same time implement SSL security as well
+
+specify a set of rules to configure ingress the solution you
+deploy is called as an ingress controller and the set of rules you configure are called as ingress
+resources ingress resources are created using definition files
 
 
 
@@ -152,21 +158,7 @@ Taints and Tolerations
 
 
 
-Ingress:
-ingress helps your users access your application
-using a single externally accessible URL
-that you can configure to route traffic
-to different services within your
-cluster based on the URL path at the
-same time implement SSL security as well
 
-specify a set of rules to
-configure ingress the solution you
-deploy is called as an ingress
-controller and the set of rules you
-configure are called as ingress
-resources ingress resources are created
-using definition files
 
 config map
 what it
