@@ -139,6 +139,8 @@ Taints and Tolerations
 
 
 Ingress:
+
+Work on L 7 
 ingress helps your users access your application using a single externally accessible URL that you can configure to route traffic
 to different services within your cluster based on the URL path at the same time implement SSL security as well
 

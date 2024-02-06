@@ -48,6 +48,10 @@ kubectl rollout history deployment/nginx-deployment
 kubectl rollout undo deployment/nginx-deployment --to-revision=1
 kubectl rollout status deployment/nginx-deployment
 
+Ingress:
+az aks create --resource-group myResourceGroup --name myCluster --enable-addons http_application_routing
+az aks enable-addons --resource-group myResourceGroup --name myCluster -addons http_application_routing
+
 secret creation:
 kubectl create secret docker-registry mongo-secret --docker-server=https://index.docker.io/v1/ --docker-username=azureuser --docker-password=Asdfg@123456 --docker-email=acmarpu@gmail.com
 ACR
