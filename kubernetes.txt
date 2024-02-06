@@ -148,31 +148,34 @@ resources ingress resources are created using definition files
 
 
 
+Azure Networking Models
+
+kubnet (Basic) Networking
+- Default AKS Config
+- Nodes get IP from Azure-Vnet
+- Pods get IP from logically diffrent IP address space then Az Vnet
+- NAT Configured for Pods communication with Az resources
+- Source IP add NAT'd to the Nodes- IP address
+
+
+
+Azure CNI (Advanced) Networking
+- Not a default configuration but you need to deploy expicitly 
+- Pods get IP address from the Azure Vnet subnet
+- Each node has configuration parameter for the no. of pods that it supports hence equivalent IP/node -reserved
+- Each IP add must be unique across vnet and reserved hence more planning requires -Advanced
+- Pods get full vnet connectivity and can be directly reached via thier private IP - No Nating
 ------------------------------
 
 
 
 
-
-
-
-
-
-
-
 config map
-what it
-does is it's basically your external
-configuration to your application
-so config map would usually contain
-configuration data
+what it does is it's basically your external configuration to your application
+so config map would usually contain configuration data
 like urls of a database or some other
-services that you use
-and in kubernetes you just connect it to
-the pod
-so that pod actually gets the data that
-config map
-contains and now if you change the name
+services that you use and in kubernetes you just connect it to
+the pod so that pod actually gets the data that config map contains and now if you change the name
 of the service
 -external configuration
 -centralized
