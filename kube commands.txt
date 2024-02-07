@@ -47,10 +47,26 @@ kubectl set image deployment/nginx-deployment nginx-container=nginx:1.21 --recor
 kubectl rollout history deployment/nginx-deployment
 kubectl rollout undo deployment/nginx-deployment --to-revision=1
 kubectl rollout status deployment/nginx-deployment
-
+-----------------------------------------------------------------
 Ingress:
+it will create New 
 az aks create --resource-group myResourceGroup --name myCluster --enable-addons http_application_routing
+
+existing
 az aks enable-addons --resource-group myResourceGroup --name myCluster -addons http_application_routing
+
+DNS Checking
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+
+The HTTP application routing add-on can only be triggered on ingress resources with the following annotation:
+
+annotations:
+ kubernetes.io/ingress.class: addon-http-application-routing
+
+ Deployment file
+ ingress_with_dns.yaml
+
+-----------------------------------------------------------------
 
 secret creation:
 kubectl create secret docker-registry mongo-secret --docker-server=https://index.docker.io/v1/ --docker-username=azureuser --docker-password=Asdfg@123456 --docker-email=acmarpu@gmail.com
