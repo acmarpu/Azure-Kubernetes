@@ -18,6 +18,8 @@ endpoints 172.17.0.6:27017 (pod ip)
 az account set --subscription kkk
 az aks get-credentials --resource-group kube-rg --name aks-lab
 
+az aks update --resource-group 30333-unravel-aks-poc-rg --name 3033-unravel-aks-poc --enable-local-accounts
+
 kubectl.exe config view
 kubectl get all
 kubectl get nodes
