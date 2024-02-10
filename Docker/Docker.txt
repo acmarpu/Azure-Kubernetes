@@ -1,0 +1,123 @@
+Container 
+
+Container have a minimal operating system they will have base image
+
+container has a package or its a bundle which is cobnation of application  and application libreys and system dependies 
+
+light waight images 
+dont have fulll OS they use the resource form your Operating system which they are running 
+
+
+
+Docker
+
+Docker is a containerization platform that provides easy way to containerize your applications, which means, using Docker you can build container images, run the images to create containers and also push these containers to container regestries such as dockerhub Quay.io so on 
+
+Docker Client :
+CLI commands
+the docker  client (docker) is the primary way that many Docker users interact with Docker. When you use commankds such as docker run, the client sens these commands to dockerd, whcih carries them out. the docker command uses the docker API the docker client can communicate with more than one daemon 
+
+Docker daemon :
+is a process that you are going to install 
+Docker daemon ensure to create your requirments 
+
+The Docker daemon (dockerd) listens for docker API requests and manages Docker objects such as images, containers, networks, and volumes, A daemon can also communicate with other daemons to manage Docker serices 
+
+
+Docker registries :
+
+A docker registry stores Docker images. Docker Hub is public registry that anyone can use and docker is configured to look for images on docker hub by default. ypu can even run your own private registry.
+
+When you use the docker pull or docker run commands, that required images are pulled from your configured registry. when you use the docker push command your image is pushed to your confiured registry 
+
+Docker file :
+
+is a set of instructions 
+get me a image
+
+Dockerfile is file where ypu provide the steps to build your Docker images
+
+FROM 
+COPY ./folder name # Copy the file from the host file system to the image file system
+
+
+
+
+images :
+
+An images is a read-only template with instructions for creating a docker container.
+
+Multi Stage Docker Builds :
+You will split your docker file into 2 parts 
+
+Distroless :
+
+
+Bind Mounts : allows you to bind a directory in side your container 
+              it will bind a folder on your container with a folder on the Host
+
+volomes : volus also do same kind of solutions and offer you a better life cycle
+           
+
+
+Docker Networking :
+Networking allows you comminicate containers each other and Host
+
+Bridge Networking : default networking 
+
+Host Networking : Remove network isolation between the container and the Docker host.
+
+Overlay Network : verlay networks connect multiple Docker daemons together.
+                  create common networks 
+
+
+Control Plane (APi Server,Schedule controller manager C-CM, ETCD)
+
+Data Plane: (Kubelet, Kube-pproxy, Container Runtime)
+
+
+AKS Service
+
+Service means act as a load balancer 
+
+1 Load balancing 
+2 Service Discovery 
+3 Expose to world - outside the cluster 
+
+ 
+Service creates 3 types
+  1. cluster IP  by befault behaviour inside the cluster 
+  2. Node port mode - allows your applicain to be accessed inside your organation
+     node ip addres  
+  3. Load Balancer : your service and application exposer to extranal world 
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
