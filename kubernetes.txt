@@ -14,6 +14,11 @@ a) High avalibility or no downtime
 b) scalability or high prtformance 
 c) Disaster recovery - backup and restore
 
+- kubernetes will always compare what is the desired state and what is the actual state or the status of that component
+  and what is the actual state or the status of that component and if the status and desired state do not match
+  then kubernetes knows there is something to be fixed there so it's going to try to fix it and this is the basis of the self-healing feature that kubernetes provides
+
+
 
 Worker Node
 - the basic setup of a worker node or in kubernetes terms a node which is a simple server a physical or virtual machine and the basic component or the smallest unit
@@ -176,17 +181,18 @@ Azure CNI (Advanced) Networking
 
 
 
+kubernetes storage :- 
+volume : lives as per the lifespan of the POD, Az disk, Azure files
+persistent volume
+persistent volume claim 
+storage class
 
-config map
-what it does is it's basically your external configuration to your application
-so config map would usually contain configuration data
-like urls of a database or some other
-services that you use and in kubernetes you just connect it to
-the pod so that pod actually gets the data that config map contains and now if you change the name
-of the service
--external configuration
--centralized
--other components can use it
+
+volumes
+it basically attaches a physical storage on a hard drive to your pod and that storage could be either 
+on a local machine meaning on the same server node where the pod is running or it could be on a remote 
+storage meaning outside of the kubernetes cluster it could be a cloud storage or 
+it could be your own premise storage
 
 secret
 used to store the secret data
@@ -195,22 +201,26 @@ storing the data in a secret component does not automatically make it secure
 there are built-in mechanism (like encryption) or basic security which are not enabled by default 
 
 
-
-volumes
-t basically
-attaches
-a physical storage on a hard drive to
-your pod
-and that storage could be either on a
-local machine meaning on the same
-server node where the pod is running or
-it could be on a remote storage
-meaning outside of the kubernetes
-cluster it could be
-a cloud storage or it could be your own
-premise storage
+config map
+what it does is it's basically your external configuration to your application
+so config map would usually contain configuration data like urls of a database or some other
+services that you use and in kubernetes you just connect it to the pod so that pod actually gets the data 
+that config map contains and now if you change the name of the service
+-external configuration
+-centralized
+-other components can use it
 
 
+persistent volumes
+are not namespaced meaning
+they're accessible to the whole cluster and unlike other components that we saw like pods and services
+
+
+
+Persistent volume claim 
+
+
+Storage class
 
 
 Replicaset:
@@ -346,43 +356,7 @@ You can do a lot of different things with an Ingress, and there are many types o
 
 
 
-kubernetes storage
-persistent volume
-persistent volume claim 
-storage class
 
- you need a
-storage
-that doesn't depend on the pod lifecycle
-
-storage must also be
-available on all nodes not just one
-specific one
-
-storage needs to survive
-even if the whole cluster crashed
-
-persistent volumes
-are not namespaced meaning
-they're accessible to the whole cluster
-and unlike
-other components that we saw like pods
-and services
-
-kubernetes will always compare what is
-the desired state
-and what is the actual state or the
-status of that component
-and what is the actual state or the
-status of that component
-and if the status and desired state do
-not match
-then kubernetes knows there is something
-to be fixed there
-so it's going to try to fix it and this
-is the basis
-of the self-healing feature that
-kubernetes provides
 
 
 

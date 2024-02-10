@@ -132,9 +132,10 @@ Deploy Yamal file
 .\kubectl get service azure-vote-front --watch
 
 
-ACR
+Azure container registry 
 az acr login -n demoacr231
 docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 demoacr231.azurecr.io/azure/azure-vote-front:v1
 docker push <name of the image:tag>
 az acr repository list --name demoacr231 -o table result 
 az acr repository list --name demoacr231 -o table
+az aks update -n demo01 -g myrg1 --attach-acr demoacr231
