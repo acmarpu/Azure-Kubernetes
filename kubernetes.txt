@@ -148,7 +148,12 @@ specify a set of rules to configure ingress the solution you
 deploy is called as an ingress controller and the set of rules you configure are called as ingress
 resources ingress resources are created using definition files
 
+single IP address can be ussed to route traffic to multiple services in a kubernetes cluster 
+An ingress controller is a place of software that provides reverse proxy, configurable traffice routing and TLS termination for kubernetes service
+Patch-based and hostbased routing, Patch-based routing allows you to route traffic based on the URL path of the request
+nginx ingress controller is its ability to provice layer 4 and layer 7 security
 
+https://www.youtube.com/watch?v=nLzrJIRpCkw
 
 Azure Networking Models
 
