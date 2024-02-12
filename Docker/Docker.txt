@@ -71,27 +71,6 @@ Overlay Network : verlay networks connect multiple Docker daemons together.
                   create common networks 
 
 
-Control Plane (APi Server,Schedule controller manager C-CM, ETCD)
-
-Data Plane: (Kubelet, Kube-pproxy, Container Runtime)
-
-
-AKS Service
-
-Service means act as a load balancer 
-
-1 Load balancing 
-2 Service Discovery 
-3 Expose to world - outside the cluster 
-
- 
-Service creates 3 types
-  1. cluster IP  by befault behaviour inside the cluster 
-  2. Node port mode - allows your applicain to be accessed inside your organation
-     node ip addres  
-  3. Load Balancer : your service and application exposer to extranal world 
-
-
  
  
 
