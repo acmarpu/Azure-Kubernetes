@@ -4,6 +4,10 @@ what kubernetes
 
 like physical machines virtual machines or cloud environments or even hybrid deployment environments
 
+- Host your applications in the form of containers in automated fashion so that you can easily deploy as many 
+  instances of your applications application as required and easily enable communication between different 
+  services within your application
+
 the rise of microservices caused increased usage of container technologies because 
 1)the containers actually offer the perfect host what are the tasks of a container orchestration tool
 2) increased usage of containers
@@ -31,10 +35,22 @@ Deployment controllers :
 
 
 Azure-Managed
-- API Server  : The API server for exposing the kubernetes API and interacting with the etcd store
-- Scheduler : When you create of scale appplications the scheduler determines what nodes can run the workload and starts them.
+- API Server  : The Kubernetes API server validates and configures data for the api objects 
+                which include pods, services, replicationcontrollers, and others. 
+                The API Server services REST operations and provides the frontend to the cluster's shared 
+                state through which all other components interact.
+- The cube API server is the primary management component of kubernetes the cube API server is responsible for
+  orchestrating all operations within the cluster it exposes the kubernetes api which is used by external users to 
+  perform management operations on the cluster as well as the various controllers to monitor the state of the 
+  cluster and make necessary changes as required and by the worker nodes to communicate with the server
+
+
+- Scheduler : When you create of scale appplications the scheduler determines what nodes 
+              can run the workload and starts them.
 - ETCD     : the etcd distributed key-value store: to maintain the state of your Kubernetes cluster and configuration
 - Controller Manager : the controller manager for managing the various controllers that handle things like replication and self-heling
+   # Node Controller
+   # ReplicIcation COntroller 
 
 Customer-Managed
 - kubelet for communication with the API server and managing the lifecycle of Pods
