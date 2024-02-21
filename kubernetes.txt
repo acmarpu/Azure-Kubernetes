@@ -101,7 +101,9 @@ StatefulSets:
 
 Service
 - kubernetes services enable communication between various components within and outside of the application 
-- kubernetes services helps us connect applications together with other applications or users for example our application has groups of pods running various sections such as a group for serving front-end loads to users and other group for running back-end
+- kubernetes services helps us connect applications together with other applications or users for example 
+  our application has groups of pods running various sections such as a group for serving front-end loads 
+  to users and other group for running back-end
 - An abstract way to expose an application running on a set of Pods as a network service.
 
 ClusterIP: 
@@ -163,7 +165,7 @@ Ingress:
 
 Work on L 7 
 ingress helps your users access your application using a single externally accessible URL that you can configure to route traffic
-to different services within your cluster based on the URL path at the same time implement SSL security as well
+to different services within your cluster based on the URL path at the same time implement SSL security aswell
 
 specify a set of rules to configure ingress the solution you
 deploy is called as an ingress controller and the set of rules you configure are called as ingress
