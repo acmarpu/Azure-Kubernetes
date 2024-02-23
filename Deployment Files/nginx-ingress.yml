@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: nginx-ingress-controller
-          image: <>
+          image: nginx:1.17.3
 
       args: 
         - /nginx-ingress-controller # nginx program is storead location command
@@ -66,6 +66,47 @@ kind: ServiceAccount
 apiVersion: v1
 metadata: 
   name: nginx-ingress-serviceaccount
+
+---
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+  name: ingress-wear-watch
+spec: 
+  rules:
+  - http:
+      paths:
+      - path: /wear
+        backend:
+          serviceName: wear-service
+          servicePort: 80
+      - path: /watch
+        backend:
+          serviceName: watch-service
+          servicePort: 80
+  
+
+---
+# Using domain
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+  name: ingress-wear-watch
+spec: 
+  rules:
+  - host: wear.my-online-store.com
+  - http:
+      paths:
+        backend:
+          serviceName: wear-service
+          servicePort: 80
+
+  - host: watch.my-online-store.com
+  - http:
+      paths:
+      - backend:
+          serviceName: watch-service
+          servicePort: 80
    
 
 

@@ -175,10 +175,12 @@ An ingress controller is a place of software that provides reverse proxy, config
 Patch-based and hostbased routing, Patch-based routing allows you to route traffic based on the URL path of the request
 nginx ingress controller is its ability to provice layer 4 and layer 7 security
 
-Ingress Controller & Ingress Resources
+Ingress Controller (solution you deploy) & Ingress Resources (set of rules you configure)
 Ingress in Kubernetes is primarily comprised of two components: Ingress API object: The Kubernetes API object that describes the desired state for exposing cluster services; Ingress controller: A cluster resource deployed within the cluster, which actually implements rules specified by the Ingress
 
 Azure Networking Models
+
+Public as a nodeport or cloud native ingress service (Loadbalancer)
 
 kubnet (Basic) Networking
 - Default AKS Config
