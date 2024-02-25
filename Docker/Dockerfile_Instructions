@@ -1,5 +1,8 @@
 ## Docker file Instructions
 - Instructions are phrases in the Dockerfile with some Behaviors
+- is a set of instructions 
+- Dockerfile is file where ypu provide the steps to build your Docker images
+
 
 # to choose the base image
 FROM ubuntu:latest

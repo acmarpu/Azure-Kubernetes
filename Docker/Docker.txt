@@ -48,7 +48,7 @@ Docker images also act as the starting point when using Docker.
 An image is comparable to a snapshot in virtual machine (VM) environments.
 light waight images 
 dont have full OS they use the resource form your Operating system which they are running 
-
+- An images is a read-only template with instructions for creating a docker container.
 
 Container:- 
 - Container is an isolated area which has every thing to run the application
@@ -71,16 +71,6 @@ Docker file :
 - is a set of instructions 
 - Dockerfile is file where ypu provide the steps to build your Docker images
 
-
-
-
-
-images :
-
-An images is a read-only template with instructions for creating a docker container.
-
-Multi Stage Docker Builds :
-You will split your docker file into 2 parts 
 
 Distroless :
 
