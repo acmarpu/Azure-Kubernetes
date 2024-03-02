@@ -72,6 +72,22 @@ Docker file :
 - Dockerfile is file where ypu provide the steps to build your Docker images
 
 
+Docker States:
+- Running (Started)
+- Exited (Stopped)
+- Paused 
+
+Docker Continer Creation Modes
+- Attached Modes 
+  Our terminal will recive output from container
+- Detached Mode (background)
+  Container runs in the background an you will recive container id
+- Interactive Terminal
+  Create a container and login into interactive shell
+  
+## Image Layers
+
+
 Distroless :
 
 
